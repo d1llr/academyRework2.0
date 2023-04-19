@@ -1,0 +1,147 @@
+.banner_container {
+    background-color: #1d1d1d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100dvw;
+    max-width: none;
+    position: relative;
+
+    .background_wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    h2 {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 50px;
+        text-transform: uppercase;
+        color: #A69249;
+        z-index: 2;
+        margin-top: 5em;
+    }
+
+    h1 {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 96px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        z-index: 2;
+    }
+
+    button {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        text-transform: uppercase;
+        padding: 1em 3.7em;
+        margin-top: 2em;
+        margin-bottom: 10em;
+        z-index: 2;
+        color: #FFFFFF;
+        cursor: pointer;
+        background: linear-gradient(180deg, #A69249 0%, #5B4B32 100%);
+        border-radius: 30px;
+        border: none;
+    }
+}
+
+
+@media (max-width:1176px) {
+    .banner_container {
+
+        h2 {
+            font-size: 40px !important;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 64px !important;
+        }
+
+        button {
+            font-size: 16px !important;
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .banner_container {
+
+        h2 {
+            font-size: 40px !important;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 64px !important;
+            margin-top: 0.3em;
+        }
+
+        button {
+            margin-top: 5em !important;
+            font-size: 16px !important;
+        }
+    }
+}
+
+@media (max-width:470px) {
+    .banner_container {
+
+        h2 {
+            font-size: 24px !important;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px !important;
+            margin-top: 0.3em;
+        }
+
+        button {
+            margin-top: 5em !important;
+            font-size: 16px !important;
+        }
+    }
+}
+
+@media (max-width:373px) {
+    .banner_container {
+
+        h2 {
+            font-size: 20px !important;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px !important;
+            margin-top: 0.3em;
+        }
+
+        button {
+            margin-top: 5em !important;
+            font-size: 16px !important;
+        }
+    }
+}
+
+
+@media(max-width: 540px) {
+    .background_wrapper {
+        background-image: url('../../../../public/imgs/main/custombackground.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .IntroBackGround {
+            display: none;
+        }
+    }
+}

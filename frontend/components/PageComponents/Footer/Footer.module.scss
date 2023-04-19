@@ -1,0 +1,390 @@
+.footer {
+    background-color: #181818;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .upper_line {
+        border-bottom: 1px solid #585858;
+        padding: 1em 5em;
+        width: 100%;
+        font-size: calc(1px + 2vw);
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+
+        .main_wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+
+            h1 {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 24px;
+                margin-bottom: 4em;
+                margin-top: 2em;
+                /* identical to box height, or 117% */
+
+
+                /* желтый */
+
+                color: #A69249;
+            }
+
+            .block {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                .block_wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 20px;
+
+                    img {
+                        margin-right: 1em;
+                    }
+
+                    .phones {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-start;
+
+                        .text {
+                            display: flex;
+                            flex-direction: column;
+                            line-height: 1.5em;
+                            /* identical to box height, or 140% */
+
+
+                            /* белый */
+
+                            color: #FFFFFF;
+                        }
+
+                        .t_w {
+                            margin-left: 1em;
+
+                            img {
+                                margin: 0 0 0 1em;
+                            }
+                        }
+                    }
+
+                    .email {
+                        @extend .phones;
+                        margin-top: 2em;
+                    }
+
+                    .adress {
+                        @extend .email;
+                    }
+
+                    .frantsuz {
+                        span {
+
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 20px;
+                            line-height: 1.5em;
+                            /* identical to box height, or 140% */
+
+                            text-align: center;
+                        }
+                    }
+
+                    .social {
+                        margin-top: 1em;
+                    }
+                }
+            }
+
+            .projects {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 30%;
+
+                ul {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    li {
+                        list-style: none;
+
+                        img {
+                            width: 5em;
+                        }
+                    }
+                }
+            }
+        }
+
+        .logotype_wrapper {}
+    }
+
+    .under_line {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em 5em;
+        width: 100%;
+        font-size: calc(1px + 2vw);
+        white-space: nowrap;
+
+        p {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 28px;
+            /* identical to box height, or 156% */
+
+            margin-left: 1em;
+            color: #D6D6D6;
+        }
+
+        .ip {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        .info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+
+            .wetop {
+                /* желтый */
+
+                color: #A69249;
+            }
+        }
+
+    }
+}
+
+
+@media (max-width: 1450px) {
+
+    .projects {
+        width: 12em !important;
+    }
+
+}
+
+@media (max-width: 1225px) {
+
+    .projects {
+        img {
+            width: 120px !important;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .under_line {
+        padding: 1em !important;
+    }
+
+    .projects {
+        img {
+            width: 110px !important;
+            height: 70px;
+        }
+    }
+
+    .info {
+        p {
+            font-size: 14px !important;
+        }
+    }
+}
+
+@media (max-width: 890px) {
+
+    .projects {
+        img {
+            width: 90px !important;
+            height: 50px;
+        }
+    }
+
+}
+
+@media (max-width: 818px) {
+    .projects {
+        display: none !important;
+    }
+
+    .upper_line {
+        padding: 1em !important;
+    }
+
+    .block {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        width: 650px;
+
+        h1 {
+            display: none;
+        }
+
+        .block_wrapper {
+            width: 100%;
+            height: 200px;
+            flex-wrap: wrap;
+
+            span {
+                font-size: 14px !important;
+            }
+
+            .email {
+                margin: 0.5em 0 !important;
+            }
+
+            .adress {
+                margin-top: 0 !important;
+            }
+
+            .social {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 17em;
+                margin-left: 2em;
+            }
+        }
+    }
+
+    .under_line {
+        flex-direction: column !important;
+
+        p {
+            display: none;
+        }
+
+        .ip {
+            text-align: center;
+
+            p {
+                display: block !important;
+                font-size: 10px;
+                color: #A5A5A5;
+                margin: 0;
+                line-height: 1.6em;
+            }
+
+        }
+
+        .info {
+            .wetop {
+                display: block;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 10px !important;
+                line-height: 120%;
+                /* identical to box height, or 12px */
+
+
+                /* желтый */
+
+                color: #A69249;
+            }
+        }
+    }
+}
+
+@media (max-width: 710px) {
+    .block {
+        width: auto !important;
+
+        .block_wrapper {
+            height: auto !important;
+
+            img {
+                margin-right: 0.5em !important;
+            }
+
+            .t_w {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+
+                img {
+                    width: 25px;
+                    margin: 0 0  0 0.5em !important;
+                    height: 25px;
+                }
+            }
+
+            .social {
+                margin-left: 0;
+                width: auto !important;
+
+                img {
+                    margin-right: 1em !important;
+                }
+
+                .paykeeper {
+                    margin-right: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 436px) {
+    .block {
+        .block_wrapper {
+            span {
+                font-size: 12px !important;
+            }
+
+            .social {
+                margin-left: 0;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+
+                .paykeeper {
+                    width: 70px;
+                    height: 30px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 357px) {
+    .block {
+        width: auto !important;
+
+        .block_wrapper {
+            height: auto !important;
+        }
+    }
+}

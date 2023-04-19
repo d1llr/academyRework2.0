@@ -1,0 +1,74 @@
+#teacher_wrapper {
+    width: 400px;
+    height:500px;
+    border-radius: 60px;
+    background: linear-gradient(180deg, #A69249 0%, #5B4B32 100%);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    align-items: center;
+    padding: 20px;
+    justify-content: center;
+    img {
+        border-radius: 50%;
+        border: 1px solid #000;
+        width: 200px;
+        height: 200px;
+    }
+
+    .text_wrapper {
+        margin-top: 3em;
+        font-size: 10px;
+        h2 {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 32px;
+
+            text-align: center;
+
+            /* белый */
+
+            color: #FFFFFF;
+        }
+
+        h3 {
+
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            margin-top: 0.5em;
+            text-align: center;
+
+            /* белый */
+
+            color: #FFFFFF;
+        }
+    }
+
+}
+
+@media(max-width:555px) {
+    #teacher_wrapper{
+        font-size: 90vw;
+        padding: .1em;
+        h2{
+            font-size: calc(1px + 5vw) !important;
+
+        }
+        h3{
+            font-size: 16px !important;
+        }
+    }
+
+}
+
+@media (max-width:404px) {
+    #teacher_wrapper{
+        img{
+            width: 170px;
+            height: 170px;
+        }
+    }
+}

@@ -1,0 +1,99 @@
+.disciplines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .h1 {
+        margin: 0 auto;
+        font-family: 'Montserrat';
+        text-align: center;
+        width: 100%;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 50px;
+        display: block;
+        margin-top: 1em;
+        margin-bottom:0.5em;
+        text-transform: uppercase;
+    }
+
+    .mobileL {
+        display: none;
+        margin: 0 auto;
+        font-family: 'Montserrat';
+        text-align: center;
+        width: 100%;
+        font-style: normal;
+        display: none;
+        margin-top: 2.4em;
+        margin-bottom: 1.7em;
+        font-weight: 700;
+        font-size: 20px;
+
+        text-transform: uppercase;
+
+        /* Черный */
+
+        color: #000000;
+    }
+
+
+    .disciplines_wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 1200px;
+
+    }
+
+    .see_more {
+        position: relative;
+        background: linear-gradient(to top, #5B4B32, #A69249);
+        padding: 4px;
+        display: none;
+        align-items: center;
+        overflow: hidden;
+        border-radius: 30px;
+        justify-content: center;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 1em;
+        span {
+            background: #f3f3f3;
+            color: rgb(0, 0, 0);
+            font-family: 'Montserrat';
+            font-weight: bold;
+            font-size: 16px;
+            padding: 0.8em 2em;
+            width: 100%;
+            border-radius: 30px;
+        }
+    }
+}
+
+@media(max-width:425px) {
+    .disciplines {
+        .h1 {
+            display: none !important;
+        }
+
+        .mobileL {
+            display: block !important;
+        }
+    }
+
+}
+
+@media(max-width:320px) {
+    .disciplines_wrapper {
+        height: 2210px;
+        overflow-y: hidden;
+
+    }
+
+    .see_more {
+        display: flex !important;
+        text-align: center;
+    }
+}

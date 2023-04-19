@@ -1,0 +1,33 @@
+.teachers_container {
+    width: 100%;
+    padding-bottom: 50px;
+    position: relative;
+    .mobileL {
+        display: none;
+        margin: 0 auto;
+        font-family: 'Montserrat';
+        text-align: center;
+        width: 100%;
+        font-style: normal;
+        display: none;
+        margin-top: 2.4em;
+        margin-bottom: 1.7em;
+        font-weight: 700;
+        font-size: 20px;
+
+        text-transform: uppercase;
+
+        /* Черный */
+
+        color: #000000;
+    }
+}
+
+@media(max-width:425px) {
+    .teachers_container {
+        .mobileL {
+            display: block !important;
+        }
+    }
+
+}
