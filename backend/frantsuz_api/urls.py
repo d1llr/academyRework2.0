@@ -4,7 +4,7 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.conf.urls import url
-from settings import DEBUG
+from django.conf import settings
 
 urlpatterns = [
     path('api/', include('users.urls')),
@@ -20,9 +20,10 @@ schema_view = get_schema_view(
       license=openapi.License(name="MIT License"),
    ),
    public=True,
-   permission_classes=(permissions.AllowAny,),
+   permission_classes=[permissions.AllowAny]
 )
-if DEBUG is True:
+
+if settings.DEBUG:
     urlpatterns += [
         url(r'^swagger(?P<format>\.json|\.yaml)$',
             schema_view.without_ui(cache_timeout=0), name='schema-json'),
