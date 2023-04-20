@@ -1,15 +1,23 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-u3cj2p@gd4&pzj7br(5jq_*3z^oz3k-k!y=l^@r6nq*-58wpc5'
+SECRET_KEY = os.getenv(
+    'SECRET_KEY',
+    default='django-insecure-u3cj2p@gd4&pzj7br(5jq_*3z^oz3k-k!y=l^@r6nq*-58wpc5'
+)
 
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '37.140.195.3',
     '*',
     '127.0.0.1',
+    'localhost',
 ]
 
 INSTALLED_APPS = [
@@ -59,14 +67,24 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'frantsuz_api.wsgi.application'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
+            'NAME': os.getenv('DB_NAME', default='postgres'),
+            'USER': os.getenv('POSTGRES_USER', default='postgres'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='010203'),
+            'HOST': os.getenv('DB_HOST', default='db'),
+            'PORT': os.getenv('DB_PORT', default='5432')
+        }
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -92,11 +110,11 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+STATIC_URL = '/backend_static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'backend_static/')
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = '/static/'
+MEDIA_URL = '/backend_media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'backend_media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -117,7 +135,7 @@ REST_FRAMEWORK = {
 }
 CORS_URLS_REGEX = r'^/api/.*$'
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
+    'http://37.140.195.3:3000',
 ]
 
 DJOSER = {
