@@ -62,6 +62,7 @@ jobs:
             host: ${{ secrets.HOST }}
             username: ${{ secrets.USERNAME }}
             key: ${{ secrets.SSH_KEY }}
+            passphrase: ${{ secrets.PASSPHRASE }}
             script: |
               sudo docker-compose down -v
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram-frontend:latest
