@@ -65,8 +65,8 @@ jobs:
             key: ${{ secrets.SSH_KEY }}
             script: |
               sudo docker-compose down -v
-              sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram-frontend:latest
-              sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram-backend:latest
+              sudo docker pull ${{ secrets.DOCKER_USERNAME }}/academy-frontend:latest
+              sudo docker pull ${{ secrets.DOCKER_USERNAME }}/academy-backend:latest
               sudo docker-compose rm backend
               touch .env
               echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
