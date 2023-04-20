@@ -12,15 +12,15 @@ urlpatterns = [
 ]
 
 schema_view = get_schema_view(
-   openapi.Info(
+    openapi.Info(
       title="Frantsuz Academy API",
       default_version='v1',
       description="Документация для API Academy",
       contact=openapi.Contact(email="real-man228@yandex.ru"),
       license=openapi.License(name="MIT License"),
-   ),
-   public=True,
-   permission_classes=[permissions.AllowAny]
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny]
 )
 
 if settings.DEBUG:
