@@ -64,7 +64,6 @@ jobs:
             password: ${{ secrets.PASSPHRASE }}
             key: ${{ secrets.SSH_KEY }}
             script: |
-              cd academy/academyRework2.0/infra/
               sudo docker-compose down -v
               sudo docker system prune -a
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/academy-frontend:latest
