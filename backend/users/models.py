@@ -4,8 +4,8 @@ from django.core.validators import validate_email
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .validators import validate_phone_number
 from .managers import UserManager
+from .validators import validate_phone_number
 
 
 class User(AbstractBaseUser, PermissionsMixin):

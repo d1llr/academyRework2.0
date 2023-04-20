@@ -9,9 +9,7 @@ services:
     env_file:
       - ./.env
   frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    image: y4r1k/academy-frontend:latest
     ports:
       - "3000:3000"
     volumes:
@@ -22,9 +20,7 @@ services:
     depends_on:
       - db
   backend:
-    build:
-      context: ../backend
-      dockerfile: Dockerfile
+    image: y4r1k/academy-backend:latest
     restart: always
     expose:
       - 8000

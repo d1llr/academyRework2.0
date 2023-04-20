@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,7 +12,7 @@ SECRET_KEY = os.getenv(
     default='django-insecure-u3cj2p@gd4&pzj7br(5jq_*3z^oz3k-k!y=l^@r6nq*-58wpc5'
 )
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '37.140.195.3',
@@ -73,7 +74,7 @@ if not DEBUG:
             'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
             'NAME': os.getenv('DB_NAME', default='postgres'),
             'USER': os.getenv('POSTGRES_USER', default='postgres'),
-            'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='010203'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='20031956tAA'),
             'HOST': os.getenv('DB_HOST', default='db'),
             'PORT': os.getenv('DB_PORT', default='5432')
         }
@@ -125,10 +126,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.IsAuthenticated',
-    # ],
-
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],

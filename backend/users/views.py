@@ -1,15 +1,15 @@
-from rest_framework.views import APIView
-from rest_framework.authtoken.models import Token
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from rest_framework import status
 from django.contrib.auth import authenticate
-from django.utils.translation import gettext_lazy as _
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
-from .backends import PhoneBackend
-
 from django.core.mail import send_mail
+from django.utils.decorators import method_decorator
+from django.utils.translation import gettext_lazy as _
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework import status
+from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .backends import PhoneBackend
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -20,7 +20,8 @@ class TokenCreateByPhoneView(APIView):
 
         if phone is None or password is None:
             return Response(
-                {'message': _('Телефон и пароль являются обязательными полями')},
+                {'message': _('Телефон и пароль являются '
+                              'обязательными полями')},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
@@ -47,7 +48,8 @@ def send_email(request):
     phone = request.data.get('phone', '')
 
     if not description or not first_name or not phone:
-        return Response({'error': 'Отсутствуют обязательные поля'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Отсутствуют обязательные поля'},
+                        status=status.HTTP_400_BAD_REQUEST)
 
     message = f"Заявка от {first_name} ({phone}):\n\n{description}"
     send_mail(
@@ -59,12 +61,3 @@ def send_email(request):
     )
 
     return Response({'success': 'Сообщение успешно отправлено'})
-
-
-# @api_view(['POST'])
-# def user_view(request):
-#     if request.method == 'POST':
-#         return Response({'message': 'Successful user creation',
-#                          'data': request.data},
-#                         status=status.HTTP_201_CREATED
-#                         )
