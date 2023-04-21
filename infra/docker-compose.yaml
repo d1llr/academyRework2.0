@@ -22,8 +22,8 @@ services:
   backend:
     image: y4r1k/academy-backend:latest
     restart: always
-    ports:
-      - "8000:8000"
+    expose:
+      - 8000
     volumes:
       - static_value:/app/backend_static/
       - media_value:/app/backend_media/
@@ -37,7 +37,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ../frontend:/usr/share/nginx/html/
+      - ../frontend/.next:/usr/share/nginx/html/
       - static_value:/var/html/backend_static/
       - media_value:/var/html/backend_media/
     restart: always
