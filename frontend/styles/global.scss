@@ -47,7 +47,7 @@ main {
 
   section {
     max-width: 1800px;
-    padding: 0 3vw;
+    padding: 0 5vw;
     margin-bottom: 100px;
     margin-left: auto;
     margin-right: auto;
@@ -80,7 +80,7 @@ main {
 .ant-modal-content {
   background: #F3F3F3 !important;
   border-radius: 60px;
-
+  padding: 2em !important;
   .ant-modal-header {
     font-family: 'Montserrat';
     font-style: normal;
@@ -159,6 +159,12 @@ main {
   -webkit-transform: translateY(-50%);
   fill: #000000;
   cursor: pointer;
+}
+
+@media (max-width:500px){
+  .arrow{
+    display: none;
+  }
 }
 
 .arrow--left {
@@ -247,6 +253,14 @@ main {
   main {
     section {
       margin-bottom: 80px !important;
+    }
+  }
+}
+
+@media (max-width:5000px) {
+  main {
+    section {
+      margin-bottom: 40px !important;
     }
   }
 }

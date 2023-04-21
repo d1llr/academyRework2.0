@@ -15,6 +15,7 @@ const Teacher: FC<any> = () => {
     const teacher = useAppSelector((state) => state.teacher.find(item => { return item.id == Number(id) }))
     const dispatch = useAppDispatch()
 
+    ///
     return (
         teacher ?
             <main className={styles.teachers_wrapper}>
@@ -63,9 +64,7 @@ const Teacher: FC<any> = () => {
                         <button onClick={()=>dispatch(openModal(true))}>
                             Записаться на курс
                         </button>
-                        <span>
-                            Каждый курс рассчитан на 10-40 занятий
-                        </span>
+                        
                     </div>
                 </div>
             </main>

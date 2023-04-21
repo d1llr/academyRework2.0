@@ -63,29 +63,36 @@
             cursor: pointer;
             margin-top: 3em;
         }
+
         @keyframes action_arrow {
-            0%{
+            0% {
                 transform: translateY(0px);
             }
-            25%{
+
+            25% {
                 transform: translateY(15px);
             }
-            50%{
+
+            50% {
                 transform: translateY(30px);
             }
-            75%{
+
+            75% {
                 transform: translateY(15px);
             }
-            100%{
+
+            100% {
                 transform: translateY(0px);
             }
         }
-        .sliding_arrow{
+
+        .sliding_arrow {
             width: 3vw;
             height: 1.5vw;
             // animation: action_arrow 1s infinite ease-in-out;
             margin-top: 3vw;
-            img{
+
+            img {
                 width: 100%;
                 height: 100%;
             }
@@ -94,27 +101,30 @@
 
 }
 
-@media (max-width:1220px){
-    .intro_text_container{
-        h1{
+@media (max-width:1220px) {
+    .intro_text_container {
+        h1 {
             font-size: 48px !important;
         }
-        h2{
+
+        h2 {
             font-size: 20px !important;
         }
-        button{
+
+        button {
             font-size: 16px !important;
         }
     }
 }
 
 
-@media (max-width:720px){
-    .intro_text_container{
-        h1{
+@media (max-width:720px) {
+    .intro_text_container {
+        h1 {
             font-size: 36px !important;
         }
-        h2{
+
+        h2 {
             font-size: 15px !important;
         }
     }
@@ -130,18 +140,29 @@
         .IntroBackGround {
             display: none;
         }
+
     }
-    .intro_text_container{
-        h1{
+
+    .sliding_arrow {
+        width: 30px !important;
+        height: 15px !important;
+        margin-top: 2em !important;
+    }
+
+    .intro_text_container {
+        h1 {
             font-size: 24px !important;
         }
-        h2{
+
+        h2 {
             font-size: 14px !important;
         }
-        button{
-            font-size: 16px;
+
+        button {
+            font-size: 14px !important;
             font-weight: bold;
-            span{
+
+            span {
                 display: none;
             }
         }
@@ -150,19 +171,22 @@
 
 
 @media(max-width: 425px) {
-    .intro_text_container{
-        h1{
+    .intro_text_container {
+        h1 {
             font-size: 24px !important;
             text-align: center;
         }
-        h2{
+
+        h2 {
             margin-top: 1em;
             font-size: 14px !important;
         }
-        button{
+
+        button {
             font-size: 16px;
             font-weight: bold;
-            span{
+
+            span {
                 display: none;
             }
         }

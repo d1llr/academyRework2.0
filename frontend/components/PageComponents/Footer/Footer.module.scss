@@ -13,7 +13,7 @@
         width: 100%;
         font-size: calc(1px + 2vw);
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         display: flex;
 
         .main_wrapper {
@@ -68,8 +68,9 @@
 
 
                             /* белый */
+                            text-decoration: underline;
 
-                            color: #FFFFFF;
+                            color: #FFFFFF !important;
                         }
 
                         .t_w {
@@ -114,7 +115,11 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                width: 30%;
+                width: 70%;
+
+                h1 {
+                    margin-bottom: 2em;
+                }
 
                 ul {
                     display: flex;
@@ -124,10 +129,16 @@
                     align-items: center;
 
                     li {
+                        width: 20%;
+                        display: flex;
+                        margin-top: 1em;
+                        align-items: center;
+                        justify-content: center;
                         list-style: none;
 
                         img {
-                            width: 5em;
+                            width: 100%;
+                            object-fit: scale-down;
                         }
                     }
                 }
@@ -184,9 +195,16 @@
 
 
 @media (max-width: 1450px) {
+    .main_wrapper {
+        flex-direction: column !important;
 
-    .projects {
-        width: 12em !important;
+        .projects {
+            width: 100% !important;
+
+            ul {
+                li {}
+            }
+        }
     }
 
 }
@@ -221,6 +239,7 @@
 
 @media (max-width: 890px) {
 
+
     .projects {
         img {
             width: 90px !important;
@@ -231,6 +250,10 @@
 }
 
 @media (max-width: 818px) {
+    .upper_line {
+        align-items: center !important;
+    }
+
     .projects {
         display: none !important;
     }
@@ -334,7 +357,7 @@
 
                 img {
                     width: 25px;
-                    margin: 0 0  0 0.5em !important;
+                    margin: 0 0 0 0.5em !important;
                     height: 25px;
                 }
             }

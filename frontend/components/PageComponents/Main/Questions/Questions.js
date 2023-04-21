@@ -32,13 +32,12 @@ const Questions = () => {
     ]
 
     return (
-        <section className={styles.question_container}>
+        <section className={styles.question_container} id='questions'>
             <h1 className ={styles.h1}>Часто задаваемые вопросы</h1>
             <div className={styles.question_wrapper}>
                 {data.map(item => {
                     return <Item answer={item.answer} question = {item.question}/>
                 })}
-
             </div>
         </section>
     );

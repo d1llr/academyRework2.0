@@ -10,7 +10,7 @@
         width: 100%;
         font-style: normal;
         display: none;
-        margin-top: 2.4em;
+        margin-top: 1em;
         margin-bottom: 1.7em;
         font-weight: 700;
         font-size: 20px;
@@ -68,7 +68,7 @@
             height: 15em;
             font-size: 26px;
             // font-size: calc(1px + 2vw);
-            border-radius: 2em;
+            border-radius: 20px;
             object-fit: cover;
         }
     }
@@ -116,7 +116,7 @@
 
         video {
             width: 95% !important;
-            height: 30em !important;
+            height: auto !important;
             margin-bottom: 2em;
         }
     }

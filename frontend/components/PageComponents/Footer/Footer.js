@@ -3,21 +3,23 @@ import Image from 'next/image';
 
 import logotype from '../../../public/imgs/Header/logotypewhite.png'
 import phone from '../../../public/imgs/Footer/phone.png';
-import telegram from '../../../public/imgs/Footer/telegram.png'
-import whatsapp from '../../../public/imgs/Footer/whatsapp.png'
 import email from '../../../public/imgs/Footer/email.png'
 import adres from '../../../public/imgs/Footer/adres.png'
-import youtube from '../../../public/imgs/Footer/social/youtube.png'
-import vk from '../../../public/imgs/Footer/social/vk.png'
-import tiktok from '../../../public/imgs/Footer/social/tic-tok.png'
-import fr from '../../../public/imgs/Footer/social/fr.png'
-import rutube from '../../../public/imgs/Footer/social/rutube.png'
-import paykeeper from '../../../public/imgs/Footer/paykeeper.png';
 
+import frantsuzClub from '../../../public/imgs/Footer/ourcompanies/frantsuz-club.png'
+import comicadze from '../../../public/imgs/Footer/ourcompanies/comicadze.png'
+import corpPitanie from '../../../public/imgs/Footer/ourcompanies/corp-pitanie.png'
+import frantsuzShop from '../../../public/imgs/Footer/ourcompanies/frantsuz-shop.png'
+import pouvsegda from '../../../public/imgs/Footer/ourcompanies/pouvsegda.png'
+import raiting from '../../../public/imgs/Footer/ourcompanies/raiting.png'
+import shashlandia from '../../../public/imgs/Footer/ourcompanies/shashlandia.png'
+import tyteda from '../../../public/imgs/Footer/ourcompanies/tyteda.png'
+import wetop from '../../../public/imgs/Footer/ourcompanies/wetop.png'
+import pominki from '../../../public/imgs/Footer/ourcompanies/pominki.png'
 
 
 const Footer = () => {
-
+    const data = []
 
     return (
         <footer className={styles.footer}>
@@ -64,8 +66,20 @@ const Footer = () => {
                     <div className={styles.projects}>
                         <h1>Наши проекты </h1>
                         <ul>
-                            {[...Array(6)].map((item, idx) => {
-                                return <li key={idx}><Image src={logotype} alt='Логотип'/></li>
+                            {[...Array(
+                                frantsuzClub, 
+                                comicadze,
+                                corpPitanie,
+                                frantsuzShop,
+                                pouvsegda,
+                                raiting,
+                                shashlandia,
+                                tyteda,
+                                wetop,
+                                pominki
+
+                            )].map((item, idx) => {
+                                return <li key={idx}><Image src={item} alt='Логотип'/></li>
                             })}
                         </ul>
                     </div>

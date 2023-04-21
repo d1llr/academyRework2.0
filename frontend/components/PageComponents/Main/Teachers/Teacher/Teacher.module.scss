@@ -11,8 +11,8 @@
     justify-content: center;
     img {
         border-radius: 50%;
-        border: 1px solid #000;
         width: 200px;
+        object-fit: cover;
         height: 200px;
     }
 
@@ -51,13 +51,15 @@
 
 @media(max-width:555px) {
     #teacher_wrapper{
-        font-size: 90vw;
-        padding: .1em;
+        font-size: 9vw;
+        width: 360px !important;
+        padding: .3em;
         h2{
             font-size: calc(1px + 5vw) !important;
 
         }
         h3{
+            margin-top: 1em !important;
             font-size: 16px !important;
         }
     }

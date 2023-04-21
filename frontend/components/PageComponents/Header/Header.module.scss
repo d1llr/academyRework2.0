@@ -221,13 +221,13 @@
     .page_header {
         nav {
             justify-content: space-around;
-            padding: 0.4em 0;
+            padding: 0.7em 0;
             .header_wrapper {
                 .logotype {
                     margin-right: 1em !important;
                     img{
-                        width: 93px;
-                        height: 40px;
+                        width: 100px;
+                        height: 50px;
                     }
                 }
 
@@ -237,6 +237,10 @@
                         a {
                             span{
                                 display: none;
+                            }
+                            img{
+                                width: 20px;
+                                height: auto;
                             }
                         }
                     }
@@ -249,8 +253,8 @@
                 }
                 .login_wrapper{
                     .login{
-                        width: 30px;
-                        height: 30px;
+                        width: 40px;
+                        height: 40px;
                     }
                 }
             }

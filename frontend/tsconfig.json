@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/PageComponents/Main/Teachers/Teachers.tsx", "redux/api/userApi.ts"  ],
+, "components/PageComponents/Main/Teachers/Teachers.tsx", "redux/api/loginApi.ts"  ],
   "exclude": [
     "node_modules"
   ]

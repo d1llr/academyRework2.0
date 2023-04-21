@@ -6,7 +6,12 @@ import { closeModal } from '../../../redux/slices/modalSlice';
 import styles from './styles.module.scss'
 
 
-const ModalFeedBack: React.FC = () => {
+
+interface props{
+    title: string
+}
+
+const UniverseModal: React.FC<props> = ({title}:props) => {
     const modal = useAppSelector(state => state.modal)
     const dispatch = useAppDispatch()
 
@@ -25,14 +30,15 @@ const ModalFeedBack: React.FC = () => {
     };
 
     return <Modal
-        title="Оставьте заявку"
+        title={title}
         open={modal.isOpen}
         onCancel={handleCancel}
         className={styles.modal_container}
         footer={null}
+        destroyOnClose = {true}
     >
         <FeedBackForm />
     </Modal>
 };
 
-export default ModalFeedBack;
+export default UniverseModal;

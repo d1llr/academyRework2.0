@@ -7,7 +7,7 @@ import LargeTeacherSlice from './slices/LargeTeacherSlice'
 import disciplinesSlice from './slices/disciplinesSlice';
 import modalSlice from './slices/modalSlice';
 import { mailApi } from './api/mailApi';
-import { userApi } from './api/userApi';
+import { loginApi } from './api/loginApi';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 const makeStore = () =>
@@ -18,9 +18,9 @@ const makeStore = () =>
         disciplines: disciplinesSlice,
         modal: modalSlice,
         [mailApi.reducerPath]: mailApi.reducer,
-        [userApi.reducerPath] : userApi.reducer
+        [loginApi.reducerPath] : loginApi.reducer
     },
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(userApi.middleware, mailApi.middleware),
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(loginApi.middleware, mailApi.middleware),
     devTools: true,
   });
 

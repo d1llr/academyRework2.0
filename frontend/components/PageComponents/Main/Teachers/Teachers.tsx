@@ -44,9 +44,9 @@ const Teachers = () => {
     
 
     return (
-        <section className={styles.teachers_container}>
-            <H1 text={'Наши преподователи'} />
-            <h1 className={styles.mobileL}>Преподователи</h1>
+        <section className={styles.teachers_container} id='teachers'>
+            <H1 text={'Наши преподаватели'} />
+            <h1 className={styles.mobileL}>Преподаватели</h1>
             <TeacherSlider>
                 {teachers.map((item) => {
                     return <SwiperSlide key={item.id}>

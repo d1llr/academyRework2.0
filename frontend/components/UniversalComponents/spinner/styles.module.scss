@@ -1,0 +1,51 @@
+.container {
+    // width: 80px;
+    // height: 100px;
+    // margin: 100px auto;
+    // margin-top: calc(100vh / 2 - 50px);
+    width: 30%;
+    @keyframes wave {
+        0% {
+            top: 0;
+            opacity: 1;
+        }
+
+        50% {
+            top: 20px;
+            opacity: .2;
+        }
+
+        100% {
+            top: 0;
+            opacity: 1;
+        }
+    }
+
+    .block {
+        position: relative;
+        box-sizing: border-box;
+        float: left;
+        margin: 0 3px 3px 0;
+        width: 4px;
+        height: 4px;
+        border-radius: 3px;
+        background: #FFF;
+
+        &:nth-child(4n+1) {
+            animation: wave 2s ease .0s infinite;
+        }
+
+        &:nth-child(4n+2) {
+            animation: wave 2s ease .2s infinite;
+        }
+
+        &:nth-child(4n+3) {
+            animation: wave 2s ease .4s infinite;
+        }
+
+        &:nth-child(4n+4) {
+            animation: wave 2s ease .6s infinite;
+        }
+
+    }
+}

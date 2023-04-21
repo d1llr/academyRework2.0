@@ -3,7 +3,6 @@ import styles from './Intro.module.scss';
 // import introBackground from '../../../../imgs/main/intro-bg.jpg';
 import IntroBackGround from "../../../UniversalComponents/IntroBackGround/IntroBackGround";
 import sliding_arrow from '../../../../public/imgs/main/sliding_arrow.png';
-import ModalFeedBack from "../../../UniversalComponents/ModalFeedBack/ModalFeedBack";
 import { useAppDispatch } from "../../../../redux/store";
 import { openModal } from "../../../../redux/slices/modalSlice";
 
@@ -22,7 +21,7 @@ const Intro = () => {
 
             <div className={styles.intro_text_container}>
                 <h1 className={styles.h1}>
-                    Академия Француз
+                   АКАДЕМИЯ «ФРАНЦУЗ»
                 </h1>
                 <h2 className={styles.h2}>
                     Курсы, разработанные с учетом потребностей в реалиях 21 века
