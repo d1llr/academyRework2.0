@@ -5,6 +5,7 @@ from django.urls import include, path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('api/', include('users.urls')),
@@ -20,11 +21,9 @@ schema_view = get_schema_view(
         license=openapi.License(name="MIT License"),
     ),
     public=True,
-    permission_classes=[permissions.AllowAny]
+    permission_classes=[permissions.AllowAny],
 )
-
-if settings.DEBUG:
-    urlpatterns += [
+urlpatterns += [
         url(r'^swagger(?P<format>\.json|\.yaml)$',
             schema_view.without_ui(cache_timeout=0), name='schema-json'),
         url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0),
@@ -32,3 +31,9 @@ if settings.DEBUG:
         url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0),
             name='schema-redoc'),
     ]
+# if settings.DEBUG:
+#     urlpatterns = (
+#         urlpatterns
+#         + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+#         + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#     )
