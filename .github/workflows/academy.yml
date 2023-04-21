@@ -65,10 +65,10 @@ jobs:
             key: ${{ secrets.SSH_KEY }}
             script: |
               sudo docker-compose down -v
-              sudo docker pull ${{ secrets.DOCKER_USERNAME }}/academy-frontend:latest
-              sudo docker pull ${{ secrets.DOCKER_USERNAME }}/academy-backend:latest
               sudo docker image rm ${{secrets.DOCKER_USERNAME }}/academy-backend
               sudo docker image rm ${{secrets.DOCKER_USERNAME }}/academy-frontend
+              sudo docker pull ${{ secrets.DOCKER_USERNAME }}/academy-frontend:latest
+              sudo docker pull ${{ secrets.DOCKER_USERNAME }}/academy-backend:latest
               sudo touch .env
               echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
               echo DB_NAME=${{ secrets.DB_NAME }} >> .env
