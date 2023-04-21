@@ -18,7 +18,6 @@ ALLOWED_HOSTS = [
     '37.140.195.3',
     '*',
     '127.0.0.1',
-    'localhost',
 ]
 
 INSTALLED_APPS = [
@@ -72,8 +71,8 @@ if not DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
-            'NAME': os.getenv('DB_NAME', default='postgres'),
-            'USER': os.getenv('POSTGRES_USER', default='postgres'),
+            'NAME': os.getenv('DB_NAME', default='academy'),
+            'USER': os.getenv('POSTGRES_USER', default='academy_user'),
             'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='20031956tAA'),
             'HOST': os.getenv('DB_HOST', default='db'),
             'PORT': os.getenv('DB_PORT', default='5432')

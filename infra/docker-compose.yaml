@@ -22,8 +22,8 @@ services:
   backend:
     image: y4r1k/academy-backend:latest
     restart: always
-    expose:
-      - 8000
+    ports:
+      - "8000:8000"
     volumes:
       - static_value:/app/backend_static/
       - media_value:/app/backend_media/
