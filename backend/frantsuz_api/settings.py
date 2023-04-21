@@ -12,12 +12,13 @@ SECRET_KEY = os.getenv(
     default='django-insecure-u3cj2p@gd4&pzj7br(5jq_*3z^oz3k-k!y=l^@r6nq*-58wpc5'
 )
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '37.140.195.3',
     '*',
     '127.0.0.1',
+    'localhost',
 ]
 
 INSTALLED_APPS = [
