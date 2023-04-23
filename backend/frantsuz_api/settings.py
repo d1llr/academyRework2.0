@@ -134,6 +134,8 @@ CORS_URLS_REGEX = r'^/api/.*$'
 # if DEBUG:
 #     CORS_ORIGIN_ALLOW_ALL = True
 # else:
+
+CORS_URLS_ALLOW_ALL = False
 CORS_ALLOWED_ORIGINS = [
     'http://37.140.195.3:3000',
     'http://localhost:3000',
