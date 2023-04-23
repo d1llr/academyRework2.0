@@ -136,6 +136,7 @@ CORS_URLS_REGEX = r'^/api/.*$'
 # else:
 CORS_ALLOWED_ORIGINS = [
     'http://37.140.195.3:3000',
+    'http://localhost:3000',
 ]
 
 DJOSER = {
