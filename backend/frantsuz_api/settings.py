@@ -12,11 +12,10 @@ SECRET_KEY = os.getenv(
     default='django-insecure-u3cj2p@gd4&pzj7br(5jq_*3z^oz3k-k!y=l^@r6nq*-58wpc5'
 )
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '37.140.195.3',
-    '*',
     '127.0.0.1',
     'localhost',
 ]
@@ -68,15 +67,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'frantsuz_api.wsgi.application'
-if not DEBUG:
+if DEBUG is False:
     DATABASES = {
         'default': {
             'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.postgresql'),
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('POSTGRES_USER'),
-            'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-            'HOST': os.getenv('DB_HOST'),
-            'PORT': os.getenv('DB_PORT')
+            'NAME': 'academy',
+            'USER': 'academy_user',
+            'PASSWORD': '20031956tAA',
+            'HOST': '37.140.195.3',
+            'PORT': '5433'
         }
     }
 else:
@@ -137,7 +136,6 @@ if DEBUG:
 else:
     CORS_ALLOWED_ORIGINS = [
         'http://37.140.195.3:3000',
-        'http://localhost:3000',
     ]
 
 DJOSER = {
