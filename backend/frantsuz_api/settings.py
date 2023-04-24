@@ -132,6 +132,8 @@ REST_FRAMEWORK = {
     ],
 }
 
+APPEND_SLASH = True
+
 CORS_URLS_REGEX = r'^/api/.*$'
 if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
@@ -145,8 +147,8 @@ else:
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'USER_CREATE_PASSWORD_RETYPE': True,
-    'ACTIVATION_URL': 'api/users/activation/{uid}/{token}',
-    'PASSWORD_RESET_CONFIRM_URL': 'api/users/reset_password_confirm/?uid={uid}&token={token}',
+    'ACTIVATION_URL': 'activation/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_URL': 'reset_password_confirm/?uid={uid}&token={token}',
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'SEND_ACTIVATION_EMAIL': True,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
