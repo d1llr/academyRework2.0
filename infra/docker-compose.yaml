@@ -6,7 +6,10 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     restart: always
-    env_file: .env
+    environment:
+      POSTGRES_DB: academy
+      POSTGRES_USER: academy_user
+      POSTGRES_PASSWORD: 20031956tAA
   frontend:
     image: y4r1k/academy-frontend:latest
     ports:
