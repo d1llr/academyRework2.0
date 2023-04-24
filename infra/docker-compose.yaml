@@ -1,6 +1,12 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    restart: always
+    env_file: .env
   frontend:
     image: y4r1k/academy-frontend:latest
     ports:
@@ -10,6 +16,8 @@ services:
     environment:
       NODE_ENV: production
     restart: always
+    depends_on:
+      - db
   backend:
     image: y4r1k/academy-backend:latest
     restart: always
@@ -19,6 +27,8 @@ services:
       - static_value:/app/backend_static/
       - media_value:/app/backend_media/
     env_file: .env
+    depends_on:
+      - db
   nginx:
     image: nginx:1.21.3-alpine
     ports:
@@ -34,6 +44,7 @@ services:
       - frontend
 
 volumes:
+  postgres_data:
   static_value:
   media_value:
   frontend_build:

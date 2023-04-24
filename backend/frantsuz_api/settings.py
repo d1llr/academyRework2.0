@@ -74,7 +74,7 @@ if DEBUG is False:
             'NAME': 'academy',
             'USER': 'academy_user',
             'PASSWORD': '010203tAA',
-            'HOST': '37.140.195.3',
+            'HOST': 'db',
             'PORT': '5432'
         }
     }
