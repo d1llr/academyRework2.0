@@ -18,6 +18,8 @@ ALLOWED_HOSTS = [
     '37.140.195.3',
     '127.0.0.1',
     'localhost',
+    'www.frantsuz.ru',
+    'frantsuz.ru',
 ]
 
 INSTALLED_APPS = [
