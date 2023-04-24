@@ -135,6 +135,8 @@ if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
 else:
     CORS_ALLOWED_ORIGINS = [
+        'http://37.140.195.3',
+        'http://37.140.195.3:3000',
         'http://37.140.195.3:8000',
     ]
 
