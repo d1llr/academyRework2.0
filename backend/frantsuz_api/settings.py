@@ -70,13 +70,12 @@ WSGI_APPLICATION = 'frantsuz_api.wsgi.application'
 if DEBUG is False:
     DATABASES = {
         'default': {
-            'ENGINE': os.getenv('DB_ENGINE',
-                                default='django.db.backends.postgresql'),
-            'NAME': os.getenv('DB_NAME', default='postgres'),
-            'USER': os.getenv('POSTGRES_USER', default='postgres'),
-            'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='010203'),
-            'HOST': os.getenv('DB_HOST', default='db'),
-            'PORT': os.getenv('DB_PORT', default='5432')
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'academy',
+            'USER': 'academy_user',
+            'PASSWORD': '010203tAA',
+            'HOST': '37.140.195.3',
+            'PORT': '5432'
         }
     }
 else:
