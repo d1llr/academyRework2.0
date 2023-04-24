@@ -73,7 +73,7 @@ if DEBUG is False:
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'academy',
             'USER': 'academy_user',
-            'PASSWORD': '010203tAA',
+            'PASSWORD': '20031956tAA',
             'HOST': 'db',
             'PORT': '5432'
         }
