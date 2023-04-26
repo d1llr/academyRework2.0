@@ -15,11 +15,8 @@ SECRET_KEY = os.getenv(
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '37.140.195.3',
-    '127.0.0.1',
-    'localhost',
-    'www.frantsuz.ru',
     'frantsuz.ru',
+    '37.140.195.3',
 ]
 
 INSTALLED_APPS = [
@@ -137,13 +134,10 @@ if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
 else:
     CORS_ALLOWED_ORIGINS = [
-        'https://www.frantsuz.ru',
         'https://frantsuz.ru',
-        'http://www.frantsuz.ru',
-        'http://frantsuz.ru',
-        'http://37.140.195.3',
-        'http://37.140.195.3:3000',
-        'http://37.140.195.3:8000',
+        'https://37.140.195.3',
+        'https://37.140.195.3:3000',
+        'https://37.140.195.3:8000',
     ]
 
 DJOSER = {
