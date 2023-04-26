@@ -36,6 +36,8 @@ services:
       - "443:443"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/ssl/frantsuz.crt:/etc/nginx/frantsuz.crt
+      - ./nginx/ssl/frantsuz.key:/etc/nginx/frantsuz.key
       - frontend_build:/usr/share/nginx/html/
       - static_value:/var/html/backend_static/
       - media_value:/var/html/backend_media/
