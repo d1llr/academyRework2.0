@@ -14,10 +14,17 @@ SECRET_KEY = os.getenv(
 
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    'frantsuz.ru',
-    '37.140.195.3',
-]
+if DEBUG:
+    ALLOWED_HOSTS = [
+        '*',
+        '127.0.0.1',
+        'localhost',
+    ]
+else:
+    ALLOWED_HOSTS = [
+        'frantsuz.ru',
+        '37.140.195.3',
+    ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -66,7 +73,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'frantsuz_api.wsgi.application'
-if DEBUG is False:
+
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -75,13 +90,6 @@ if DEBUG is False:
             'PASSWORD': '20031956tAA',
             'HOST': 'db',
             'PORT': '5432'
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
