@@ -37,11 +37,8 @@ services:
     image: nginx:1.21.3-alpine
     ports:
       - "80:80"
-      - "443:443"
     volumes:
-      - www-html:/var/www/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - etc-letsencrypt:/etc/letsencrypt
       - frontend_build:/usr/share/nginx/html/
       - static_value:/var/html/backend_static/
       - media_value:/var/html/backend_media/
@@ -49,19 +46,9 @@ services:
     depends_on:
       - backend
       - frontend
-  certbot:
-    image: certbot/certbot:latest
-    depends_on:
-      - nginx
-    volumes:
-      - etc-letsencrypt:/etc/letsencrypt
-      - www-html:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email real-man228@yandex.ru --agree-tos --no-eff-email --staging -d frantsuz.ru
 
 volumes:
   postgres_data:
   static_value:
   media_value:
   frontend_build:
-  www-html:
-  etc-letsencrypt:
