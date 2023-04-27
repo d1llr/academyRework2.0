@@ -11,7 +11,7 @@ const BASEURL = process.env.BASEURL
 // Define a service using a base URL and expected endpoints
 export const mailApi = createApi({
     reducerPath: 'mailApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://37.140.195.3:8000/api' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://frantsuz.ru/api' }),
     endpoints: (build) => ({
         sendEmail: build.mutation<mail, {id: number, data: mail }>({
             query: ({id, data}) => ({
