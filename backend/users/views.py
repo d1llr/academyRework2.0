@@ -105,7 +105,7 @@ def send_order(request, id=None):
                    f'Почта: {email}\n')
     order_text += '--------------------------------------\n\n'
     order_text += 'СПОСОБ ДОСТАВКИ:\n'
-    if is_delivery:
+    if int(is_delivery):
         order_text += 'Доставка по адресу:\n'
         street = order_data.get('street')
         entrance = order_data.get('entrance')
