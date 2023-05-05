@@ -7,7 +7,10 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     restart: always
-    env_file: .env
+    environment:
+      POSTGRES_DB: academy
+      POSTGRES_USER: academy_user
+      POSTGRES_PASSWORD: 20031956tAA
 
   frontend:
     image: y4r1k/academy-frontend:latest
@@ -18,6 +21,8 @@ services:
     environment:
       NODE_ENV: production
     restart: always
+    depends_on:
+      - db
 
   backend:
     image: y4r1k/academy-backend:latest
@@ -28,6 +33,8 @@ services:
       - static_value:/app/backend_static/
       - media_value:/app/backend_media/
     env_file: .env
+    depends_on:
+      - db
 
   nginx:
     image: nginx:1.21.3-alpine
