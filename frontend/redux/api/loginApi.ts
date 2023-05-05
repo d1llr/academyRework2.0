@@ -13,11 +13,11 @@ interface IPhone {
 // Define a service using a base URL and expected endpoints
 export const loginApi = createApi({
   reducerPath: 'loginApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://frantsuz.ru/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://frantsuz.ru/api' }),
   endpoints: (builder) => ({
     getUserByEmail: builder.mutation<string, IEmail>({
       query: ({ email, password }) => ({
-        url: `/auth/token-email`,
+        url: 'auth/token-email',
         method: "POST",
         body: {
           email: email,
@@ -27,7 +27,7 @@ export const loginApi = createApi({
     }),
     getUserByPhone: builder.mutation<string, IPhone>({
       query: ({ phone, password }) => ({
-        url: `/auth/token-phone`,
+        url: 'auth/token-phone',
         method: "POST",
         body: {
           phone: phone,
