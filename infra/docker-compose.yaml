@@ -11,8 +11,6 @@ services:
     environment:
       NODE_ENV: production
     restart: always
-    depends_on:
-      - db
 
   backend:
     image: y4r1k/academy-backend:latest
@@ -23,8 +21,6 @@ services:
       - static_value:/app/backend_static/
       - media_value:/app/backend_media/
     env_file: .env
-    depends_on:
-      - db
 
   nginx:
     image: nginx:1.21.3-alpine
