@@ -65,10 +65,7 @@ jobs:
             key: ${{ secrets.SSH_KEY }}
             script: |
               cd academy/
-              sudo docker container stop academy-backend-1
-              sudo docker container stop academy-frontend-1
-              sudo docker container rm academy-backend-1
-              sudo docker container rm academy-frontend-1
+              sudo docker-compose down -v
               sudo docker image rm ${{secrets.DOCKER_USERNAME }}/academy-backend
               sudo docker image rm ${{secrets.DOCKER_USERNAME }}/academy-frontend
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/academy-frontend:latest
