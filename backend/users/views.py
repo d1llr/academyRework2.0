@@ -134,7 +134,7 @@ def send_order(request, id=None):
                            f'Количество: {count}\n'
                            f'Цена: {price} рублей\n'
                            f'Вес: {weight}\n')
-            order_text += '--------------------------------------\n\n'
+            order_text += '--------------------------------------\n'
     order_text += f'ИТОГОВАЯ СУММА ЗАКАЗА: {total_price} рублей'
     send_mail(
         f'Новый заказ: #{order_id}',
