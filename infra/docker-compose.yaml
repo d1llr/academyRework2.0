@@ -2,16 +2,6 @@ version: '3.8'
 
 services:
 
-  db:
-    image: postgres:13.0-alpine
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    restart: always
-    environment:
-      POSTGRES_DB: academy
-      POSTGRES_USER: academy_user
-      POSTGRES_PASSWORD: 20031956tAA
-
   frontend:
     image: y4r1k/academy-frontend:latest
     ports:
@@ -53,7 +43,6 @@ services:
       - frontend
 
 volumes:
-  postgres_data:
   frontend_build:
   static_value:
   media_value:
