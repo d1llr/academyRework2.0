@@ -150,6 +150,7 @@ else:
         'https://37.140.192.105',
         'https://37.140.192.105:3000',
         'https://37.140.192.105:8000',
+        'https://pominki-dostavka.ru',
     ]
 
 DJOSER = {
