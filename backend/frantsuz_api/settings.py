@@ -85,10 +85,10 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'academy',
+            'NAME': 'academy_db',
             'USER': 'academy_user',
             'PASSWORD': '20031956tAA',
-            'HOST': 'db',
+            'HOST': '37.140.195.3',
             'PORT': '5432'
         }
     }
