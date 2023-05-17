@@ -138,7 +138,7 @@ REST_FRAMEWORK = {
 }
 
 CORS_URLS_REGEX = r'^/api/.*$'
-if DEBUG:
+if not DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
 else:
     CORS_ALLOWED_ORIGINS = [
