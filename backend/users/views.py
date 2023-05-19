@@ -69,7 +69,7 @@ def send_email(request):
 
 # ШАШЛАНДИЯ ИНФОРМАЦИЯ О ЗАКАЗЕ
 @api_view(['POST'])
-def send_order(request, id=None):
+def send_order_shashlandia(request, id=None):
     response = requests.get(f'https://shashlandia.ru/orders/{id}')
     if response.status_code != 200:
         return JsonResponse({'message': 'Error receiving order'},
@@ -111,6 +111,76 @@ def send_order(request, id=None):
         entrance = order_data.get('entrance')
         storey = order_data.get('storey')
         flat = order_data.get('flat')
+        order_text += (f'Улица, дом: {street}\n'
+                       f'Подъезд: {entrance}\n'
+                       f'Этаж: {storey}\n'
+                       f'Квартира: {flat}\n')
+    else:
+        order_text += 'Самовывоз\n'
+    order_text += '--------------------------------------\n\n'
+    order_text += f'КОММЕНТАРИЙ К ЗАКАЗУ:\n{comment}\n'
+    order_text += '--------------------------------------\n\n'
+    order_text += 'ТОВАРЫ К ВЫДАЧЕ:\n'
+    order_text += '--------------------------------------\n'
+    iteration = 0
+    for product in products:
+        title = product.get('product', {}).get('title')
+        count = product.get('count')
+        price = product.get('product', {}).get('price')
+        weight = product.get('product', {}).get('weight')
+        if title and count:
+            iteration += 1
+            order_text += (f'{iteration}. {title}\n'
+                           f'Количество: {count}\n'
+                           f'Цена: {price} рублей\n'
+                           f'Вес: {weight}\n')
+            order_text += '--------------------------------------\n'
+    order_text += f'ИТОГОВАЯ СУММА ЗАКАЗА: {total_price} рублей'
+    send_mail(
+        f'Новый заказ: #{order_id}',
+        order_text,
+        'academy@frantsuz.ru',
+        ['academy@frantsuz.ru'],
+        fail_silently=False,
+    )
+    return JsonResponse({'success': True})
+
+
+# ПОМИНКИ-ДОСТАВКА ИНФОРМАЦИЯ О ЗАКАЗЕ
+@api_view(['POST'])
+def send_order_pominki_dostavka(request):
+    try:
+        user_data = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse({'message': 'Invalid JSON payload'}, status=400)
+    first_name = user_data.get('first_name')
+    last_name = user_data.get('last_name')
+    phone = user_data.get('phone')
+    email = user_data.get('email')
+    is_delivery = user_data.get('is_delivery')
+    order_id = user_data.get('id')
+    products = user_data.get('products')
+    total_price = user_data.get('total_price')
+    date_order = user_data.get('created_at')
+    comment = user_data.get('comment')
+    if not order_id or not products:
+        return JsonResponse(
+            {'message': 'Missing required fields in JSON payload'}, status=400)
+
+    order_text = f'Заказ: #{order_id}\nДата заказа: {date_order}\n\n'
+    order_text += (f'ИНФОРМАЦИЯ О ЗАКАЗЧИКЕ:\n'
+                   f'Имя: {first_name}\n'
+                   f'Фамилия: {last_name}\n'
+                   f'Номер телефона: {phone}\n'
+                   f'Почта: {email}\n')
+    order_text += '--------------------------------------\n\n'
+    order_text += 'СПОСОБ ДОСТАВКИ:\n'
+    if int(is_delivery):
+        order_text += 'Доставка по адресу:\n'
+        street = user_data.get('street')
+        entrance = user_data.get('entrance')
+        storey = user_data.get('storey')
+        flat = user_data.get('flat')
         order_text += (f'Улица, дом: {street}\n'
                        f'Подъезд: {entrance}\n'
                        f'Этаж: {storey}\n'
