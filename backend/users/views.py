@@ -148,17 +148,18 @@ def send_order_shashlandia(request, id=None):
 
 # ПОМИНКИ-ДОСТАВКА ИНФОРМАЦИЯ О ЗАКАЗЕ
 @api_view(['POST'])
-def send_order_pominki_dostavka(request):
+def send_order_pominki_dostavka(request, id=None):
     try:
         user_data = json.loads(request.body)
     except json.JSONDecodeError:
         return JsonResponse({'message': 'Invalid JSON payload'}, status=400)
     first_name = user_data.get('first_name')
     last_name = user_data.get('last_name')
+    middle_name = user_data.get('middle_name')
     phone = user_data.get('phone')
     email = user_data.get('email')
     is_delivery = user_data.get('is_delivery')
-    order_id = user_data.get('id')
+    order_id = id
     products = user_data.get('products')
     total_price = user_data.get('total_price')
     date_order = user_data.get('created_at')
@@ -169,8 +170,9 @@ def send_order_pominki_dostavka(request):
 
     order_text = f'Заказ: #{order_id}\nДата заказа: {date_order}\n\n'
     order_text += (f'ИНФОРМАЦИЯ О ЗАКАЗЧИКЕ:\n'
-                   f'Имя: {first_name}\n'
                    f'Фамилия: {last_name}\n'
+                   f'Имя: {first_name}\n'
+                   f'Отчество: {middle_name}\n'
                    f'Номер телефона: {phone}\n'
                    f'Почта: {email}\n')
     order_text += '--------------------------------------\n\n'

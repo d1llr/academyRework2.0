@@ -23,7 +23,7 @@ urlpatterns = [
         name='send_order'
     ),
     path(
-        'send-order-pominki/',
+        'send-order-pominki/<int:id>/',
         send_order_pominki_dostavka,
         name='send_order_pomiki'
     )
