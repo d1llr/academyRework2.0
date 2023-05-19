@@ -98,7 +98,8 @@ def send_order_shashlandia(request, id=None):
         return JsonResponse(
             {'message': 'Missing required fields in JSON payload'}, status=400)
 
-    order_text = (f'ЗАКАЗ: #{order_id} ШАШЛАНДИЯ.РФ\n'
+    order_text = (f'ШАШЛАНДИЯ.РФ\n'
+                  f'ЗАКАЗ: #{order_id}\n'
                   f'ДАТА ЗАКАЗА: {date_order}\n\n')
     order_text += (f'ИНФОРМАЦИЯ О ЗАКАЗЧИКЕ:\n'
                    f'Имя: {first_name}\n'
@@ -139,7 +140,7 @@ def send_order_shashlandia(request, id=None):
             order_text += '--------------------------------------\n'
     order_text += f'ИТОГОВАЯ СУММА ЗАКАЗА: {total_price} рублей'
     send_mail(
-        f'Новый заказ: #{order_id}',
+        f'Шашландия новый заказ: #{order_id}',
         order_text,
         'academy@frantsuz.ru',
         ['academy@frantsuz.ru'],
@@ -165,16 +166,15 @@ def send_order_pominki_dostavka(request, id=None):
     products = user_data.get('products_data')
     total_price = user_data.get('total_price')
     current_date = datetime.datetime.now()
-    moscow_offset = datetime.timedelta(hours=3)
-    moscow_date = current_date + moscow_offset
-    moscow_date_string = moscow_date.strftime('%d.%m.%Y %H:%M:%S')
+    moscow_date_string = current_date.strftime('%d.%m.%Y %H:%M:%S')
     date_order = moscow_date_string
     comment = user_data.get('comment')
     if not order_id or not products:
         return JsonResponse(
             {'message': 'Missing required fields in JSON payload'}, status=400)
 
-    order_text = (f'ЗАКАЗ: #{order_id} ПОМИНКИ-ДОСТАВКА\n'
+    order_text = (f'ПОМИНКИ-ДОСТАВКА\n'
+                  f'ЗАКАЗ: #{order_id}\n'
                   f'ДАТА ЗАКАЗА: {date_order}\n\n')
     order_text += (f'ИНФОРМАЦИЯ О ЗАКАЗЧИКЕ:\n'
                    f'Фамилия: {last_name}\n'
@@ -216,7 +216,7 @@ def send_order_pominki_dostavka(request, id=None):
             order_text += '--------------------------------------\n'
     order_text += f'ИТОГОВАЯ СУММА ЗАКАЗА: {total_price} рублей'
     send_mail(
-        f'Новый заказ: #{order_id}',
+        f'Поминки-доставка новый заказ: #{order_id}',
         order_text,
         'academy@frantsuz.ru',
         ['academy@frantsuz.ru'],
