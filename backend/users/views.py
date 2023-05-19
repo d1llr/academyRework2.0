@@ -1,5 +1,5 @@
 import json
-
+import datetime
 import requests
 from django.contrib.auth import authenticate
 from django.core.mail import send_mail
@@ -97,7 +97,8 @@ def send_order_shashlandia(request, id=None):
         return JsonResponse(
             {'message': 'Missing required fields in JSON payload'}, status=400)
 
-    order_text = f'Заказ: #{order_id}\nДата заказа: {date_order}\n\n'
+    order_text = (f'ЗАКАЗ: #{order_id} ШАШЛАНДИЯ.РФ\n'
+                  f'ДАТА ЗАКАЗА: {date_order}\n\n')
     order_text += (f'ИНФОРМАЦИЯ О ЗАКАЗЧИКЕ:\n'
                    f'Имя: {first_name}\n'
                    f'Фамилия: {last_name}\n'
@@ -162,13 +163,18 @@ def send_order_pominki_dostavka(request, id=None):
     order_id = id
     products = user_data.get('products_data')
     total_price = user_data.get('total_price')
-    date_order = user_data.get('created_at')
+    current_date = datetime.datetime.now()
+    moscow_offset = datetime.timedelta(hours=3)
+    moscow_date = current_date + moscow_offset
+    moscow_date_string = moscow_date.strftime('%d.%m.%Y %H:%M:%S')
+    date_order = moscow_date_string
     comment = user_data.get('comment')
     if not order_id or not products:
         return JsonResponse(
             {'message': 'Missing required fields in JSON payload'}, status=400)
 
-    order_text = f'Заказ: #{order_id}\nДата заказа: {date_order}\n\n'
+    order_text = (f'ЗАКАЗ: #{order_id} ПОМИНКИ-ДОСТАВКА\n'
+                  f'ДАТА ЗАКАЗА: {date_order}\n\n')
     order_text += (f'ИНФОРМАЦИЯ О ЗАКАЗЧИКЕ:\n'
                    f'Фамилия: {last_name}\n'
                    f'Имя: {first_name}\n'
@@ -197,7 +203,7 @@ def send_order_pominki_dostavka(request, id=None):
     iteration = 0
     for product in products:
         title = product.get('product', {}).get('title')
-        count = product.get('count')
+        count = product.get('product_count')
         price = product.get('product', {}).get('price')
         weight = product.get('product', {}).get('weight')
         if title and count:
