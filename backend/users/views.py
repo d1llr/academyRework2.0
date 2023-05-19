@@ -143,7 +143,7 @@ def send_order_shashlandia(request, id=None):
         f'Шашландия новый заказ: #{order_id}',
         order_text,
         'academy@frantsuz.ru',
-        ['academy@frantsuz.ru'],
+        ['academy@frantsuz.ru', 'dostavka@tyteda.ru'],
         fail_silently=False,
     )
     return JsonResponse({'success': True})
@@ -219,7 +219,7 @@ def send_order_pominki_dostavka(request, id=None):
         f'Поминки-доставка новый заказ: #{order_id}',
         order_text,
         'academy@frantsuz.ru',
-        ['academy@frantsuz.ru'],
+        ['academy@frantsuz.ru', 'dostavka@tyteda.ru'],
         fail_silently=False,
     )
     return JsonResponse({'success': True})
