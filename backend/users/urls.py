@@ -1,9 +1,8 @@
 from django.urls import include, path
 from djoser.views import TokenCreateView
 
-from .views import (TokenCreateByPhoneView, send_email,
-                    send_order_pominki_dostavka, send_order_shashlandia,
-                    get_order_status)
+from .views import (TokenCreateByPhoneView, get_order_status, send_email,
+                    send_order_pominki_dostavka, send_order_shashlandia)
 
 urlpatterns = [
     path('', include('djoser.urls')),
