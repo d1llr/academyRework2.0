@@ -2,7 +2,8 @@ from django.urls import include, path
 from djoser.views import TokenCreateView
 
 from .views import (TokenCreateByPhoneView, send_email,
-                    send_order_pominki_dostavka, send_order_shashlandia)
+                    send_order_pominki_dostavka, send_order_shashlandia,
+                    get_order_status)
 
 urlpatterns = [
     path('', include('djoser.urls')),
@@ -26,5 +27,10 @@ urlpatterns = [
         'send-order-pominki/<int:id>/',
         send_order_pominki_dostavka,
         name='send_order_pomiki'
-    )
+    ),
+    path(
+        'get_pay_status/<str:order_id>/',
+        get_order_status,
+        name='pay_status'
+    ),
 ]

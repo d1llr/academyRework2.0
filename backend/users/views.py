@@ -1,6 +1,6 @@
 import datetime
 import json
-
+from urllib.parse import urlencode
 import requests
 from django.contrib.auth import authenticate
 from django.core.mail import send_mail
@@ -73,17 +73,20 @@ def send_email(request):
 def send_order_shashlandia(request, id=None):
     response = requests.get(f'https://shashlandia.ru/orders/{id}')
     if response.status_code != 200:
-        return JsonResponse({'message': 'Error receiving order'},
+        return JsonResponse({'message': 'Ошибка получения заказа'},
                             status=400)
     if request.method != "POST":
-        return JsonResponse({'message': 'Only POST requests are supported'},
+        return JsonResponse({'message': 'Поддерживаются только POST-запросы'},
                             status=405)
 
     order_data = response.json()
     try:
         user_data = json.loads(request.body)
     except json.JSONDecodeError:
-        return JsonResponse({'message': 'Invalid JSON payload'}, status=400)
+        return JsonResponse(
+            {'message': 'Неверная полезная нагрузка JSON'},
+            status=400
+        )
     first_name = user_data.get('first_name')
     last_name = user_data.get('last_name')
     phone = user_data.get('phone')
@@ -96,7 +99,9 @@ def send_order_shashlandia(request, id=None):
     comment = order_data.get('comment')
     if not order_id or not products:
         return JsonResponse(
-            {'message': 'Missing required fields in JSON payload'}, status=400)
+            {'message': 'Отсутствуют обязательные поля в полезной нагрузке'},
+            status=400
+        )
 
     order_text = (f'ШАШЛАНДИЯ.РФ\n'
                   f'ЗАКАЗ: #{order_id}\n'
@@ -146,7 +151,60 @@ def send_order_shashlandia(request, id=None):
         ['academy@frantsuz.ru', 'dostavka@tyteda.ru'],
         fail_silently=False,
     )
-    return JsonResponse({'success': True})
+    url = "https://3dsec.sberbank.ru/payment/rest/register.do"
+    payload = {
+        "userName": "t5041214554_230523-api",
+        "password": "HghYv0Q8",
+        "orderNumber": order_id,
+        "amount": total_price,
+        "returnUrl": "https://shashlandia.ru"  # потом поменяй
+    }
+    headers = {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+    data = urlencode(payload)
+    response = requests.post(
+        url,
+        data=data,
+        headers=headers,
+        verify='./Cert_CA.pem'
+    )
+    data = response.json()
+    order_id = data["orderId"]
+    form_url = data["formUrl"]
+    return JsonResponse({
+        'orderId': order_id,
+        'formUrl': form_url
+    })
+
+
+@api_view(['POST'])
+def get_order_status(request, order_id):
+    url = "https://3dsec.sberbank.ru/payment/rest/getOrderStatusExtended.do"
+    payload = {
+        "userName": "t5041214554_230523-api",
+        "password": "HghYv0Q8",
+        "orderId": order_id,
+    }
+    headers = {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+    data = urlencode(payload)
+    response = requests.post(
+        url,
+        data=data,
+        headers=headers,
+        verify='./Cert_CA.pem'
+    )
+    if response.status_code != 200:
+        return JsonResponse({'message': 'Ошибка получения статуса оплаты'},
+                            status=400)
+    if request.method != "POST":
+        return JsonResponse({'message': 'Поддерживаются только POST-запросы'},
+                            status=405)
+    data = response.json()
+    order_status = data["orderStatus"]
+    return JsonResponse({'Статус заказа': order_status})
 
 
 # ПОМИНКИ-ДОСТАВКА ИНФОРМАЦИЯ О ЗАКАЗЕ
@@ -155,7 +213,8 @@ def send_order_pominki_dostavka(request, id=None):
     try:
         user_data = json.loads(request.body)
     except json.JSONDecodeError:
-        return JsonResponse({'message': 'Invalid JSON payload'}, status=400)
+        return JsonResponse({'message': 'Неверная полезная нагрузка JSON'},
+                            status=400)
     first_name = user_data.get('first_name')
     last_name = user_data.get('last_name')
     middle_name = user_data.get('middle_name')
@@ -171,7 +230,9 @@ def send_order_pominki_dostavka(request, id=None):
     comment = user_data.get('comment')
     if not order_id or not products:
         return JsonResponse(
-            {'message': 'Missing required fields in JSON payload'}, status=400)
+            {'message': 'Отсутствуют обязательные поля в полезной нагрузке'},
+            status=400
+        )
 
     order_text = (f'ПОМИНКИ-ДОСТАВКА\n'
                   f'ЗАКАЗ: #{order_id}\n'
