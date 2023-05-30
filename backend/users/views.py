@@ -164,7 +164,7 @@ def send_order_shashlandia(request, order_id=None):
             "userName": "t5041214554_230523-api",
             "password": "HghYv0Q8",
             "orderNumber": order_id,
-            "amount": total_price * 100,
+            "amount": int(total_price) * 100,
             "returnUrl": (f"https://xn--80aamqmn7eb2e.xn--p1ai/"
                           f"paysuccess?id={order_id}"),
             "failUrl": (f"https://xn--80aamqmn7eb2e.xn--p1ai/"
@@ -182,6 +182,7 @@ def send_order_shashlandia(request, order_id=None):
         )
 
         data = response.json()
+        print(data)
         order_id = data["orderId"]
         form_url = data["formUrl"]
         return JsonResponse({
