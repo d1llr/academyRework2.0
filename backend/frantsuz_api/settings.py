@@ -138,20 +138,20 @@ REST_FRAMEWORK = {
 }
 
 CORS_URLS_REGEX = r'^/api/.*$'
-if DEBUG:
-    CORS_ORIGIN_ALLOW_ALL = True
-else:
-    CORS_ALLOWED_ORIGINS = [
-        'https://frantsuz.ru',
-        'https://37.140.195.3',
-        'https://37.140.195.3:3000',
-        'https://37.140.195.3:8000',
-        'https://shashlandia.ru',
-        'https://37.140.192.105',
-        'https://37.140.192.105:3000',
-        'https://37.140.192.105:8000',
-        'https://pominki-dostavka.ru',
-    ]
+# if DEBUG:
+CORS_ORIGIN_ALLOW_ALL = True
+# else:
+#     CORS_ALLOWED_ORIGINS = [
+#         'https://frantsuz.ru',
+#         'https://37.140.195.3',
+#         'https://37.140.195.3:3000',
+#         'https://37.140.195.3:8000',
+#         'https://shashlandia.ru',
+#         'https://37.140.192.105',
+#         'https://37.140.192.105:3000',
+#         'https://37.140.192.105:8000',
+#         'https://pominki-dostavka.ru',
+#     ]
 
 DJOSER = {
     'LOGIN_FIELD': 'email',
