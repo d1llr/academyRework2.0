@@ -18,7 +18,7 @@ urlpatterns = [
     ),
     path('send-email/', send_email, name='send_email'),
     path(
-        'send-order-email/<int:id>/',
+        'send-order-email/<int:order_id>/',
         send_order_shashlandia,
         name='send_order'
     ),

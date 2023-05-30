@@ -71,8 +71,8 @@ def send_email(request):
 
 # ШАШЛАНДИЯ ИНФОРМАЦИЯ О ЗАКАЗЕ
 @api_view(['POST'])
-def send_order_shashlandia(request, id=None):
-    response = requests.get(f'https://shashlandia.ru/orders/{id}')
+def send_order_shashlandia(request, order_id=None):
+    response = requests.get(f'https://shashlandia.ru/orders/{order_id}')
     if response.status_code != 200:
         return JsonResponse({'message': 'Ошибка получения заказа'},
                             status=400)
@@ -126,6 +126,12 @@ def send_order_shashlandia(request, id=None):
                        f'Квартира: {flat}\n')
     else:
         order_text += 'Самовывоз\n'
+    payment = user_data.get('payment')
+    order_text += '--------------------------------------\n\n'
+    if int(payment):
+        order_text += 'СПОСОБ ОПЛАТЫ:\nОнлайн на сайте\n'
+    else:
+        order_text += 'СПОСОБ ОПЛАТЫ:\nОплата при получении\n'
     order_text += '--------------------------------------\n\n'
     order_text += f'КОММЕНТАРИЙ К ЗАКАЗУ:\n{comment}\n'
     order_text += '--------------------------------------\n\n'
@@ -152,31 +158,38 @@ def send_order_shashlandia(request, id=None):
         ['academy@frantsuz.ru', 'dostavka@tyteda.ru'],
         fail_silently=False,
     )
-    url = "https://3dsec.sberbank.ru/payment/rest/register.do"
-    payload = {
-        "userName": "t5041214554_230523-api",
-        "password": "HghYv0Q8",
-        "orderNumber": order_id,
-        "amount": total_price,
-        "returnUrl": "https://shashlandia.ru"  # потом поменяй
-    }
-    headers = {
-        "Content-Type": "application/x-www-form-urlencoded"
-    }
-    data = urlencode(payload)
-    response = requests.post(
-        url,
-        data=data,
-        headers=headers,
-        verify='./Cert_CA.pem'
-    )
-    data = response.json()
-    order_id = data["orderId"]
-    form_url = data["formUrl"]
-    return JsonResponse({
-        'orderId': order_id,
-        'formUrl': form_url
-    })
+    if int(payment):
+        url = "https://3dsec.sberbank.ru/payment/rest/register.do"
+        payload = {
+            "userName": "t5041214554_230523-api",
+            "password": "HghYv0Q8",
+            "orderNumber": order_id,
+            "amount": total_price * 100,
+            "returnUrl": (f"https://xn--80aamqmn7eb2e.xn--p1ai/"
+                          f"paysuccess?id={order_id}"),
+            "failUrl": (f"https://xn--80aamqmn7eb2e.xn--p1ai/"
+                        f"payfail?id={order_id}")
+        }
+        headers = {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+        data = urlencode(payload)
+        response = requests.post(
+            url,
+            data=data,
+            headers=headers,
+            verify='./Cert_CA.pem'
+        )
+
+        data = response.json()
+        order_id = data["orderId"]
+        form_url = data["formUrl"]
+        return JsonResponse({
+            'orderId': order_id,
+            'formUrl': form_url
+        })
+    else:
+        return JsonResponse({'status': f'Заказ {order_id} создан.'})
 
 
 @api_view(['POST'])
